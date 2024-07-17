@@ -7,7 +7,8 @@
 }
 
 .formGobal,
-.formGobalConnexion {
+.formGobalConnexion,
+.formGobalModify {
   display: flex;
   flex-direction: column;
   width: 75vw;
@@ -17,6 +18,10 @@
 
 .formGobal {
   margin-top: 5%;
+}
+
+.formGobalModify {
+  margin-top: 2%;
 }
 
 .formButton {
@@ -40,7 +45,8 @@
 
 @media only screen and (min-width: 1183px) {
   .formGobal,
-  .formGobalConnexion {
+  .formGobalConnexion,
+  .formGobalModify {
     width: 30vw;
   }
 }

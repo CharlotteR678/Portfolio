@@ -18,7 +18,7 @@ class ProjectRepository extends AbstractRepository {
 
     const allValues = project.selectedSkills.map((value) => [
       result.insertId,
-      value, 
+      value,
     ]);
 
     const [result2] = await this.database.query(
@@ -76,9 +76,9 @@ class ProjectRepository extends AbstractRepository {
 
       const allValues = project.selectedSkills.map((value) => [
         project.id,
-        value, 
+        value,
       ]);
-  
+
       const [result3] = await this.database.query(
         `insert into project_skill (project_id, skill_id) values ?`,
         [allValues]
@@ -92,11 +92,16 @@ class ProjectRepository extends AbstractRepository {
 
   // The D of CRUD - Delete operation
   async delete(id) {
+    const [result2] = await this.database.query(
+      `DELETE FROM project_skill WHERE project_id = ?`,
+      [id]
+    );
+
     const [result] = await this.database.query(
       `delete from ${this.table} where id = ?`,
       [id]
     );
-    return [result.affectedRows];
+    return [result2.affectedRows, result.affectedRows];
   }
 }
 

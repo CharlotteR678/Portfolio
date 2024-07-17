@@ -94,7 +94,22 @@ export default function ModifyProjectForm() {
     });
   };
 
-  const deleteProject = () => {};
+  const deleteProject = async () => {
+    try {
+        const response = await fetch(`${URL}/project/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.status !== 204) {
+            return console.error("an error occured, try againt later");
+        }
+        return navigate("/admin")
+      } catch (err) {
+        return console.error("Fetch error:", err);
+      }
+  };
 
   return (
     <main className="formMain">
@@ -105,7 +120,7 @@ export default function ModifyProjectForm() {
         confirmBox={confirmBox}
         setConfirmBox={setConfirmBox}
       />
-      <form method="post" className="formGobal" onSubmit={handleSubmit}>
+      <form method="post" className="formGobalModify" onSubmit={handleSubmit}>
         <label className="formLabel" htmlFor="title">
           NOM
         </label>

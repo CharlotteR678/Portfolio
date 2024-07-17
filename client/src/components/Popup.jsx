@@ -17,6 +17,11 @@ export default function PopUp({
         <p id="textPopUp">{text}</p>
         <ul id="buttonPopUpUl">
           <li className="popUpLi">
+            <button type="button" className="buttonPopUp" onClick={deletePop}>
+              Non
+            </button>
+          </li>
+          <li className="popUpLi">
             <button
               type="submit"
               className="buttonPopUp"
@@ -25,14 +30,9 @@ export default function PopUp({
               Oui
             </button>
           </li>
-          <li className="popUpLi">
-            <button type="button" className="buttonPopUp" onClick={deletePop}>
-              Non
-            </button>
-          </li>
         </ul>
       </div>
-      <button type="button" onClick={deletePop}>
+      <button type="button" onClick={deletePop} id="popUpButton">
         SUPPRIMER
       </button>
     </>

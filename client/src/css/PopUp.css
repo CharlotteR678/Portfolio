@@ -41,6 +41,11 @@
   text-align: center;
 }
 
+#popUpButton {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
 @media only screen and (min-width: 1183px) {
   #buttonPopUpUl {
     flex-direction: row;
