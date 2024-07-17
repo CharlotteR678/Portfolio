@@ -1,0 +1,46 @@
+#aboutMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  min-height: 86vh;
+}
+
+#experiencesDiv {
+  min-width: 25vw;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.imageAbout {
+  width: 8vw;
+}
+
+.aboutImage {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.aboutLi {
+  margin: 2%;
+}
+
+@media only screen and (min-width: 1183px) {
+  #aboutMain {
+    display: flex;
+    flex-direction: row;
+    min-height: 83vh;
+  }
+
+  #experiencesDiv {
+    justify-content: space-evenly;
+    border: 1px solid var(--main-color);
+    box-shadow: -17px 11px 0px var(--main-color);
+    min-width: 25vw;
+    min-height: 55vh;
+    align-items: center;
+    padding: 2em;
+  }
+}
