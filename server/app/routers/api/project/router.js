@@ -15,7 +15,7 @@ const ValidateCookie = require("../../../services/ValidateCookie")
 router.get("/", browse);
 
 // Route to get a specific item by ID
-router.get("/:id", read);
+router.get("/:id", ValidateCookie, read);
 
 // Route to add a new item
 router.post("/", ValidateCookie, add);

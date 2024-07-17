@@ -11,7 +11,7 @@ const ValidateCookie = (req, res, next) => {
     req.user = decoded;
 
     if (req.user.IsAdmin === false) {
-      return res.status(403);
+      return res.status(403).json({ error: "Access denied" });
     }
 
     return next();

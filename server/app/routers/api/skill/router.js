@@ -9,18 +9,21 @@ const router = express.Router();
 // Import item-related actions
 const { browse, read, add, edit, destroy } = require("../../../controllers/SkillActions");
 
+const ValidateCookie = require("../../../services/ValidateCookie")
+
+
 // Route to get a list of items
 router.get("/", browse);
 
 // Route to get a specific item by ID
-router.get("/:id", read);
+router.get("/:id", ValidateCookie, read);
 
 // Route to add a new item
-router.post("/", add);
+router.post("/", ValidateCookie, add);
 
-router.put("/:id", edit);
+router.put("/:id", ValidateCookie, edit);
 
-router.delete("/:id", destroy);
+router.delete("/:id", ValidateCookie, destroy);
 
 /* ************************************************************************* */
 

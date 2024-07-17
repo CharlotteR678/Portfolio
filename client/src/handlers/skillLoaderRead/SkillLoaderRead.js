@@ -1,3 +1,5 @@
+import { redirect } from "react-router-dom";
+
 const URL = import.meta.env.VITE_API_URL;
 
 const SkillLoaderRead = async ({params}) => {
@@ -6,7 +8,9 @@ const SkillLoaderRead = async ({params}) => {
       method: "GET",
       credentials: "include",
     });
-
+    if (response.status === 401 || response.status === 403) {
+        return redirect("/acces_refuse");
+      }
     if (response.status !== 200) {
       return new Error("Failed to fetch profile data");
     }
