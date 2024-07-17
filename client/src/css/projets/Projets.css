@@ -1,0 +1,38 @@
+.projectImage {
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  width: 70vw;
+}
+
+#projectsMap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.projectList {
+  margin: 2em 3em;
+}
+
+.h2Project {
+  margin: 2% 0;
+}
+
+.projectSkillMap {
+  display: flex;
+}
+
+.projectSkill {
+  margin: 2%;
+  margin-left: 0;
+  border: 1px solid var(--main-color);
+  border-radius: 20px;
+  padding: 0 0.5em;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1183px) {
+  .projectImage {
+    width: 25vw;
+  }
+}

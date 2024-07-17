@@ -1,0 +1,70 @@
+#homePageMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 83vh;
+}
+
+#profilePicture {
+  width: 30vw;
+  border-radius: 200px;
+  box-shadow: -45px -30px 0px var(--main-color);
+  border: none;
+}
+
+.capacitiesHP {
+  border: 1px solid var(--main-color);
+  margin: 1.2vh 0 0 0.7vw;
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  padding: 0 0.5em;
+}
+
+#capacitiesulHP {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.homePageDiv {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+#pHP {
+  margin-top: 5vh;
+  padding: 0 5vw;
+}
+
+#buttonHP {
+  margin-top: 5vh;
+}
+
+#h3HP {
+  margin-top: 3vh;
+  margin-bottom: 1.5vh;
+}
+
+@media only screen and (min-width: 1183px) {
+  #profilePicture {
+    width: 15vw;
+  }
+  #descriptiondiv {
+    text-align: left;
+    padding: 0;
+    margin-left: 5em;
+  }
+
+  #pHP {
+    padding: 0;
+    width: 50vw;
+  }
+
+  #capacitiesulHP {
+    justify-content: unset;
+  }
+}

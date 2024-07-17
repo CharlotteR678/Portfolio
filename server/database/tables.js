@@ -1,5 +1,8 @@
 // Import the repository modules responsible for handling data operations on the tables
-const ItemRepository = require("./models/ItemRepository");
+const SkillRepository = require("./models/SkillRepository");
+const ProjectRepository = require("./models/ProjectRepository");
+const ProjectSkillRepository = require("./models/ProjectSkillRepository");
+const UserRepository = require("./models/UserRepository");
 
 // Create an empty object to hold data repositories for different tables
 const tables = {};
@@ -9,7 +12,10 @@ const tables = {};
 /* ************************************************************************* */
 
 // Register each repository as data access point for its table
-tables.item = new ItemRepository();
+tables.skill = new SkillRepository();
+tables.project = new ProjectRepository();
+tables.project_skill = new ProjectSkillRepository();
+tables.user = new UserRepository();
 
 /* ************************************************************************* */
 
