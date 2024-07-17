@@ -1,0 +1,38 @@
+.formTitle {
+  background-color: var(--main-color);
+  padding: 0.3em;
+}
+
+.formMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 83vh;
+}
+
+.formGobal {
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+  border: 1px solid var(--main-color);
+  padding: 2em;
+  margin-top: 5%;
+}
+
+.formButton {
+  margin-top: 8%;
+  margin-bottom: 8%;
+}
+
+.formLabel {
+  font-weight: bold;
+  margin-top: 3%;
+}
+
+.formInput {
+  background-color: #d9d9d9;
+  border: none;
+  height: 2.5vh;
+  margin-top: 2%;
+}

@@ -28,6 +28,7 @@ export default function Homepage() {
   ];
 
   return (
+    <main id="homePageMain">
     <div className="homePageDiv">
       <div id="imageDiv">
         <img src={profilePicture} alt="profile" id="profilePicture" />
@@ -58,5 +59,6 @@ export default function Homepage() {
         </Link>
       </div>
     </div>
+    </main>
   );
 }
