@@ -1,6 +1,6 @@
 const URL = import.meta.env.VITE_API_URL;
 
-const profileLoader = async () => {
+const SkillLoader = async () => {
   try {
     const response = await fetch(`${URL}/skill/`, {
       method: "GET",
@@ -17,4 +17,4 @@ const profileLoader = async () => {
   }
 };
 
-export default profileLoader;
+export default SkillLoader;

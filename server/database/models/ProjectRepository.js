@@ -16,8 +16,20 @@ class ProjectRepository extends AbstractRepository {
       [project.title, project.description]
     );
 
+    const allValues = project.selectedSkills.map((value) => [
+      result.insertId,
+      value, 
+    ]);
+
+    const [result2] = await this.database.query(
+      `insert into project_skill (project_id, skill_id) values ?`,
+      [allValues]
+    );
+
+
+
     // Return the ID of the newly inserted item
-    return result.insertId;
+    return result2.insertId;
   }
 
   // The Rs of CRUD - Read operations

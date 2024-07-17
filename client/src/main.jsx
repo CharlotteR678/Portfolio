@@ -8,8 +8,9 @@ import HomePage from "./pages/HomePage";
 import Projets from "./pages/Projets";
 import FormUser from "./pages/FormUser";
 import ConnexionForm from "./pages/ConnexionForm";
+import FormAddProject from "./pages/FormAddProject";
 
-import ProfileLoader from "./handlers/profileLoader/ProfileLoader";
+import SkillLoader from "./handlers/SkillLoader/SkillLoader";
 import ProjectLoader from "./handlers/projectLoader/ProjectLoader";
 
 const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
-        loader : ProfileLoader,
+        loader : SkillLoader,
       },
       {
         path: "/projets",
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
       {
         path: "/connexion",
         element: <ConnexionForm />,
+      },
+      {
+        path: "/add-form",
+        element: <FormAddProject />,
+        loader : SkillLoader
       },
     ],
   },

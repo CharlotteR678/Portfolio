@@ -25,6 +25,7 @@ const read = async (req, res, next) => {
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   const user = req.body;
+
   try {
     const insertId = await tables.project.create(user);
     res.status(201).json({ insertId });
