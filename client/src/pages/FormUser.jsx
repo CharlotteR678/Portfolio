@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/Form.css";
 
 import { AuthContext } from "../UseContext/AuthContext";
+import TitleH2Component from "../components/TitleH2Component";
 
 export default function FormUser() {
   const URL = import.meta.env.VITE_API_URL;
@@ -42,7 +43,7 @@ export default function FormUser() {
 
   return (
     <main className="formMain">
-      <h2 className="formTitle">NOUVEL UTILISATEUR</h2>
+      <TitleH2Component title="NOUVEL UTILISATEUR" />
       <form method="post" className="formGobal" onSubmit={handleSubmit}>
         <label className="formLabel" htmlFor="name">
           NOM
@@ -57,7 +58,7 @@ export default function FormUser() {
         </label>
         <input className="formInput" type="password" name="password" required />
         <button className="formButton" type="submit">
-          AJOUTER UN UTILISATEUT
+          AJOUTER UN UTILISATEUR
         </button>
       </form>
     </main>

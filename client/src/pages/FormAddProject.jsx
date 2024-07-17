@@ -1,6 +1,7 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import "../css/Form.css";
 import { useState } from "react";
+import TitleH2Component from "../components/TitleH2Component";
 
 export default function FormAddProject() {
   const URL = import.meta.env.VITE_API_URL;
@@ -31,7 +32,7 @@ export default function FormAddProject() {
       if (response.status !== 201) {
         throw new Error("Failed to create user");
       }
-      navigate("/");
+      navigate("/admin");
     } catch (error) {
       console.error("Error:", error.message);
     }
@@ -48,7 +49,7 @@ export default function FormAddProject() {
 
   return (
     <main className="formMain">
-      <h2 className="formTitle">NOUVEAU PROJET</h2>
+      <TitleH2Component title="NOUVEAU PROJET" />
       <form method="post" className="formGobal" onSubmit={handleSubmit}>
         <label className="formLabel" htmlFor="title">
           NOM
@@ -74,7 +75,7 @@ export default function FormAddProject() {
           </div>
         ))}
         <button className="formButton" type="submit">
-          AJOUTER UN PROJET
+          ENVOYER
         </button>
       </form>
     </main>

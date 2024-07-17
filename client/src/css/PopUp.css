@@ -1,0 +1,48 @@
+.hidden {
+  display: none;
+}
+
+.popUp {
+  position: fixed;
+  background: white;
+  border: solid 1px var(--main-color);
+  border-radius: 20px;
+  width: 50vw;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#textPopUp {
+  color: black;
+  text-align: center;
+}
+
+#buttonPopUpUl {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonPopUp {
+  min-width: 0;
+  width: 90%;
+  margin: 5%;
+}
+
+.popUpLi {
+  margin: 5%;
+  width: 100%;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1183px) {
+  #buttonPopUpUl {
+    flex-direction: row;
+  }
+}

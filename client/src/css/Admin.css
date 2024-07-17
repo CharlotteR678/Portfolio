@@ -1,0 +1,45 @@
+#AdminMain {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 5%;
+  min-height: 80vh;
+}
+
+.AdminDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.AdminButton {
+  background-color: transparent;
+  border: 1px solid var(--main-color);
+  border-radius: 0;
+  margin: 5% 0;
+  padding: 4em;
+}
+
+.hidden {
+  display: none;
+}
+
+.AdminUlVisible {
+  display: block;
+}
+
+@media only screen and (min-width: 1183px) {
+  #AdminMain {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .AdminDiv {
+    width: 30vw;
+  }
+  .AdminButton {
+    margin: 15% 0;
+    font-size: 1.2em;
+  }
+}

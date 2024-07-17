@@ -26,8 +26,6 @@ class ProjectRepository extends AbstractRepository {
       [allValues]
     );
 
-
-
     // Return the ID of the newly inserted item
     return result2.insertId;
   }
@@ -69,7 +67,27 @@ class ProjectRepository extends AbstractRepository {
       `update ${this.table} set title = ?, description = ? where id = ?`,
       [project.title, project.description, project.id]
     );
-    return result.affectedRows;
+
+    if (project.selectedSkills.length > 0) {
+      const [result2] = await this.database.query(
+        `DELETE FROM project_skill WHERE project_id = ?`,
+        [project.id]
+      );
+
+      const allValues = project.selectedSkills.map((value) => [
+        project.id,
+        value, 
+      ]);
+  
+      const [result3] = await this.database.query(
+        `insert into project_skill (project_id, skill_id) values ?`,
+        [allValues]
+      );
+
+      return [result.affectedRows, result2.affectedRows, result3.affectedRows];
+    }
+
+    return [result.affectedRows];
   }
 
   // The D of CRUD - Delete operation

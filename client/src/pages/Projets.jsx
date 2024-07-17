@@ -6,7 +6,6 @@ import "../css/projets/Projets.css";
 export default function Projets() {
 
   const projects = useLoaderData()
-
     return (
         <ul id="projectsMap">
           {projects.map((project) => (

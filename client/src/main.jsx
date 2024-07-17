@@ -9,9 +9,12 @@ import Projets from "./pages/Projets";
 import FormUser from "./pages/FormUser";
 import ConnexionForm from "./pages/ConnexionForm";
 import FormAddProject from "./pages/FormAddProject";
+import Admin from "./pages/Admin";
+import ModifyProjectForm from "./pages/ModifyProjectForm";
 
 import SkillLoader from "./handlers/SkillLoader/SkillLoader";
 import ProjectLoader from "./handlers/projectLoader/ProjectLoader";
+import ProjectLoaderRead from "./handlers/projectLoaderRead/ProjectLoaderRead";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +42,15 @@ const router = createBrowserRouter([
         path: "/add-form",
         element: <FormAddProject />,
         loader : SkillLoader
+      },
+      {
+        path: "/admin",
+        element: <Admin />,
+      },
+      {
+        path: "/modify-project/:id",
+        element: <ModifyProjectForm />,
+        loader : ProjectLoaderRead,
       },
     ],
   },
