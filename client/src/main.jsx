@@ -4,11 +4,22 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
+import HomePage from "./pages/HomePage";
+import Projets from "./pages/Projets";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/projets",
+        element: <Projets />,
+      },
+    ],
   },
 ]);
 

@@ -1,0 +1,25 @@
+.navBar {
+  background-color: var(--secondary-color);
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.active p {
+  background-color: var(--main-color);
+  padding: 0 1vw;
+}
+
+.NavMenu {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1183px) {
+  .NavMenu {
+    justify-content: flex-end;
+  }
+}
