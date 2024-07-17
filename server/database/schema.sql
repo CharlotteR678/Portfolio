@@ -4,9 +4,22 @@ create table user (
   password varchar(255) not null
 );
 
-create table item (
+create table project (
   id int unsigned primary key auto_increment not null,
-  title varchar(255) not null,
-  user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+  title varchar(55) not null,
+  description varchar(255) not null
 );
+
+create table skill (
+  id int unsigned primary key auto_increment not null,
+  name varchar(55) not null
+);
+
+create table project_skill (
+  id int unsigned primary key auto_increment not null,
+  project_id int unsigned not null,
+  skill_id int unsigned not null,
+  FOREIGN KEY (project_id) REFERENCES project(id), 
+  FOREIGN KEY (skill_id) REFERENCES skill(id)
+);
+
