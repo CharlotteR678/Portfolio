@@ -11,18 +11,24 @@
   min-height: 83vh;
 }
 
-.formGobal {
+.formGobal,
+.formGobalConnexion {
   display: flex;
   flex-direction: column;
-  width: 35vw;
+  width: 75vw;
   border: 1px solid var(--main-color);
   padding: 2em;
+}
+
+.formGobal {
   margin-top: 5%;
 }
 
 .formButton {
   margin-top: 8%;
   margin-bottom: 8%;
+  min-width: 0;
+  font-weight: bold;
 }
 
 .formLabel {
@@ -35,4 +41,11 @@
   border: none;
   height: 2.5vh;
   margin-top: 2%;
+}
+
+@media only screen and (min-width: 1183px) {
+  .formGobal,
+  .formGobalConnexion {
+    width: 30vw;
+  }
 }

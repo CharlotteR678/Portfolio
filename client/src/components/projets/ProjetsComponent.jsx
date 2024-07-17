@@ -1,25 +1,26 @@
 import PropTypes from "prop-types";
 
-export default function ProjetsComponent({ project }) {
+export default function ProjetsComponent({ project, image }) {
   return (
     <>
-      <img src={project.image} alt={project.title} className="projectImage" />
+      <img src={image} alt={project.title} className="projectImage" />
       <h2 className="h2Project">{project.title}</h2>
       <p className="projectDescription">{project.description}</p>
-      <ul className="projectSkillMap">
+      <p className="projectSkill">{project.skills}</p>
+      {/* <ul className="projectSkillMap">
         {project.skills.map((skill) => (
           <li key={skill.id} className="projectSkill">
             {skill.skill}
           </li>
         ))}
-      </ul>
+      </ul> */}
     </>
   );
 }
 
 ProjetsComponent.propTypes = {
+  image: PropTypes.string.isRequired,
   project: PropTypes.shape({
-    image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     skills: PropTypes.arrayOf(

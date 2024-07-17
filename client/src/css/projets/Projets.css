@@ -8,7 +8,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 70vw;
 }
 
 .projectList {
@@ -29,15 +28,11 @@
   border: 1px solid var(--main-color);
   border-radius: 20px;
   padding: 0 0.5em;
+  text-align: center;
 }
 
 @media only screen and (min-width: 1183px) {
   .projectImage {
     width: 25vw;
-  }
-
-  #projectsMap {
-    justify-content: auto;
-    max-width: none;
   }
 }

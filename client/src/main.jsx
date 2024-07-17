@@ -7,6 +7,10 @@ import App from "./App";
 import HomePage from "./pages/HomePage";
 import Projets from "./pages/Projets";
 import FormUser from "./pages/FormUser";
+import ConnexionForm from "./pages/ConnexionForm";
+
+import ProfileLoader from "./handlers/profileLoader/ProfileLoader";
+import ProjectLoader from "./handlers/projectLoader/ProjectLoader";
 
 const router = createBrowserRouter([
   {
@@ -15,14 +19,20 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+        loader : ProfileLoader,
       },
       {
         path: "/projets",
         element: <Projets />,
+        loader : ProjectLoader,
       },
       {
-        path: "/formulaire-inscription",
+        path: "/inscription",
         element: <FormUser />,
+      },
+      {
+        path: "/connexion",
+        element: <ConnexionForm />,
       },
     ],
   },

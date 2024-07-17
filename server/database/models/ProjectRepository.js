@@ -35,7 +35,15 @@ class ProjectRepository extends AbstractRepository {
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all items from the "item" table
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [rows] = await this.database.query(`SELECT 
+    project.id, 
+    project.title, 
+    project.description, 
+    GROUP_CONCAT(skill.name SEPARATOR ' ') AS skills
+    FROM project
+    JOIN project_skill ON project_skill.project_id = project.id
+    JOIN skill ON project_skill.skill_id = skill.id
+    GROUP BY project.id`);
 
     // Return the array of items
     return rows;
@@ -47,11 +55,7 @@ class ProjectRepository extends AbstractRepository {
   async update(project) {
     const [result] = await this.database.query(
       `update ${this.table} set title = ?, description = ? where id = ?`,
-      [
-        project.title,
-        project.description, 
-        project.id
-      ]
+      [project.title, project.description, project.id]
     );
     return result.affectedRows;
   }

@@ -1,31 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import profilePicture from "../assets/images/profilePicture2.png";
 import "../css/HomePage.css";
 
 export default function Homepage() {
-  const Capacities = [
-    {
-      name: "Javascript",
-    },
-    {
-      name: "React",
-    },
-    {
-      name: "HTML",
-    },
-    {
-      name: "CSS",
-    },
-    {
-      name: "Git",
-    },
-    {
-      name: "Figma",
-    },
-    {
-      name: "NodeJs",
-    },
-  ];
+
+  const capacities = useLoaderData();
 
   return (
     <main id="homePageMain">
@@ -37,8 +16,8 @@ export default function Homepage() {
         <h3 id="h3HP">Charlotte Rouyer</h3>
         <h1 id="h1HP">DEVELOPPEUSE WEB FULLSTACK</h1>
         <ul id="capacitiesulHP">
-          {Capacities.map((capacitie) => (
-            <li className="capacitiesHP" key={capacitie.name}>
+          {capacities.map((capacitie) => (
+            <li className="capacitiesHP" key={capacitie.id}>
               {capacitie.name}
             </li>
           ))}
