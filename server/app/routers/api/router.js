@@ -11,6 +11,7 @@ const UserRouter = require("./user/router");
 const ProjectRouter = require("./project/router");
 const SkillRouter = require("./skill/router");
 const ProjectSkillRouter = require("./projectSkill/router");
+const AuthActions = require("./auth/router");
 
 router.use(
     "/images",
@@ -21,6 +22,7 @@ router.use("/user", UserRouter);
 router.use("/project", ProjectRouter);
 router.use("/skill", SkillRouter);
 router.use("/project-skill", ProjectSkillRouter);
+router.use("/auth", AuthActions);
 
 
 

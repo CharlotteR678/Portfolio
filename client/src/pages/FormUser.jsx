@@ -1,9 +1,13 @@
-import "../css/Form.css";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import "../css/Form.css";
+
+import { AuthContext } from "../UseContext/AuthContext";
 
 export default function FormUser() {
   const URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
+  const { update, setUpdate } = useContext(AuthContext);
 
 
   const handleSubmit = async (event) => {
@@ -29,6 +33,7 @@ export default function FormUser() {
       if (response.status !== 201) {
         throw new Error("Failed to create user");
       }
+      setUpdate(!update)
       navigate("/");
     } catch (error) {
       console.error("Error:", error.message);

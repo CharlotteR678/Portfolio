@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Form.css";
+
+import { AuthContext } from "../UseContext/AuthContext";
 
 export default function ConnexionForm() {
   const navigate = useNavigate();
   const URL = import.meta.env.VITE_API_URL;
+  const { update, setUpdate } = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,6 +25,7 @@ export default function ConnexionForm() {
       });
 
       if (response.status === 200) {
+        setUpdate(!update)
         return navigate("/");
       }
       return { error: "incorrect mail or password" };
