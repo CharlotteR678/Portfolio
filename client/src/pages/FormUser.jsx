@@ -1,7 +1,10 @@
 import "../css/Form.css";
+import { useNavigate } from "react-router-dom";
 
 export default function FormUser() {
   const URL = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,8 +29,9 @@ export default function FormUser() {
       if (response.status !== 201) {
         throw new Error("Failed to create user");
       }
-    } catch (err) {
-      console.error("Error:", err.message);
+      navigate("/");
+    } catch (error) {
+      console.error("Error:", error.message);
     }
   };
 

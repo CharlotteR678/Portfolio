@@ -64,7 +64,7 @@ class UserRepository extends AbstractRepository {
 
   async login(mail) {
     const [result] = await this.database.query(
-      `SELECT id, password, email WHERE email = ?`,
+      `SELECT id, password, email FROM ${this.table} WHERE email = ?`,
       [mail]
     );
     return result[0];

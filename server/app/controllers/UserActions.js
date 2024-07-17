@@ -76,6 +76,7 @@ const destroy = async (req, res, next) => {
 const checkLog = async (req, res, next) => {
   // Retrieve user email and password from HTTP request body
   const { mail, password } = req.body;
+
   try {
     // Retrieve user information from the database according to email address
     const user = await tables.user.login(mail);
@@ -98,7 +99,7 @@ const checkLog = async (req, res, next) => {
       delete req.body.password;
 
       // Set the token in cookie
-      res.cookie("cretchomCookie", token, {
+      res.cookie("portfolioCRCookie", token, {
         httpOnly: true,
         sameSite: "Strict",
         maxAge: 24 * 60 * 60 * 1000,
@@ -112,6 +113,11 @@ const checkLog = async (req, res, next) => {
   }
 };
 
+const disconect = async (req, res) => {
+  res.clearCookie("portfolioCRCookie");
+  res.status(200).json();
+};
+
 // Ready to export the controller functions
 module.exports = {
   browse,
@@ -120,4 +126,5 @@ module.exports = {
   edit,
   destroy,
   checkLog,
+  disconect,
 };
