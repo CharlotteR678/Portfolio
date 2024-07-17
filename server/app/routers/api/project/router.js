@@ -20,9 +20,9 @@ router.get("/:id", read);
 // Route to add a new item
 router.post("/", ValidateCookie, add);
 
-router.put("/:id", edit);
+router.put("/:id", ValidateCookie, edit);
 
-router.delete("/:id", destroy);
+router.delete("/:id", ValidateCookie, destroy);
 
 /* ************************************************************************* */
 

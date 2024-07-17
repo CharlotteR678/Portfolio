@@ -57,11 +57,16 @@ class SkillRepository extends AbstractRepository {
 
   // The D of CRUD - Delete operation
   async delete(id) {
+    const [result2] = await this.database.query(
+      `DELETE FROM project_skill WHERE skill_id = ?`,
+      [id]
+    );
+
     const [result] = await this.database.query(
       `delete from ${this.table} where id = ?`,
       [id]
     );
-    return [result.affectedRows];
+    return [result2.affectedRows, result.affectedRows];
   }
 }
 
