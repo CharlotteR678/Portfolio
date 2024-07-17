@@ -7,6 +7,16 @@
   justify-content: space-evenly;
 }
 
+.menu-link:hover,
+#deleteButton:hover {
+  background-color: var(--main-color);
+}
+
+.menu-link {
+  padding: 0 1vw;
+  margin: 1vw;
+}
+
 .active p {
   background-color: var(--main-color);
   padding: 0 1vw;
@@ -16,6 +26,13 @@
   display: flex;
   justify-content: space-evenly;
   width: 100%;
+}
+
+#deleteButton {
+  background-color: transparent;
+  height: auto;
+  min-width: 0;
+  border-radius: 0;
 }
 
 @media only screen and (min-width: 1183px) {

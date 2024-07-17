@@ -48,15 +48,6 @@ a {
   list-style-type: none;
 }
 
-.menu-link:hover {
-  background-color: var(--main-color);
-}
-
-.menu-link {
-  padding: 0 1vw;
-  margin: 1vw;
-}
-
 @media only screen and (min-width: 1183px) {
   button {
     min-width: 25vw;

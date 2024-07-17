@@ -50,7 +50,7 @@ export default function NavBar() {
               </NavLink>
             </li>
             <li>
-              <button className="menu-link" type="button" onClick={disconnect}>
+              <button className="menu-link" type="button" id="deleteButton" onClick={disconnect}>
                 DECONNEXION
               </button>
             </li>
