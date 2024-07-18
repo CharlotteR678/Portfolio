@@ -51,7 +51,7 @@ export default function ConnexionForm() {
           MOT DE PASSE
         </label>
         <input className="formInput" type="password" name="password" required />
-        <button className="formButton" type="submit">
+        <button className="formButton globallButton" type="submit">
           CONNEXION
         </button>
       </form>

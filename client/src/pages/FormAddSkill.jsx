@@ -40,7 +40,7 @@ export default function FormAddSkill() {
           NOM
         </label>
         <input className="formInput" type="text" name="name" required />
-        <button className="formButton" type="submit">
+        <button className="formButton globallButton" type="submit">
           ENVOYER
         </button>
       </form>

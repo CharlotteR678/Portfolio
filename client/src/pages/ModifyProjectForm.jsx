@@ -1,5 +1,6 @@
 import { useEffect, useState, useReducer } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import notify from "../../modules/notify";
 import "../css/Form.css";
 
 import TitleH2Component from "../components/TitleH2Component";
@@ -81,6 +82,7 @@ export default function ModifyProjectForm() {
       if (response.status !== 204) {
         throw new Error("Failed to create user");
       }
+      notify("Image téléchargée avec succès", "success");
     } catch (error) {
       console.error("Error:", error.message);
     }
@@ -149,7 +151,7 @@ export default function ModifyProjectForm() {
           Choisisser l'image du projet
         </label>
         <input className="formInput" type="file" name="image" required />
-        <button className="formButton" type="submit">
+        <button className="formButton globallButton" type="submit">
           VALIDER
         </button>
       </form>
@@ -191,7 +193,7 @@ export default function ModifyProjectForm() {
               <label htmlFor={skill.id}>{skill.name}</label>
             </div>
           ))}
-        <button className="formButton" type="submit">
+        <button className="formButton globallButton" type="submit">
           ENVOYER
         </button>
       </form>

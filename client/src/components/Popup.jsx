@@ -17,14 +17,18 @@ export default function PopUp({
         <p id="textPopUp">{text}</p>
         <ul id="buttonPopUpUl">
           <li className="popUpLi">
-            <button type="button" className="buttonPopUp" onClick={deletePop}>
+            <button
+              type="button"
+              className="buttonPopUp globallButton"
+              onClick={deletePop}
+            >
               Non
             </button>
           </li>
           <li className="popUpLi">
             <button
               type="submit"
-              className="buttonPopUp"
+              className="buttonPopUp globallButton"
               onClick={HandleDelete}
             >
               Oui

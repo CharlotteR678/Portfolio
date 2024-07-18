@@ -103,7 +103,7 @@ export default function ModifySkillForm() {
           onChange={(e) => onChangeadd(e, "name")}
           required
         />
-        <button className="formButton" type="submit">
+        <button className="formButton globallButton" type="submit">
           ENVOYER
         </button>
       </form>

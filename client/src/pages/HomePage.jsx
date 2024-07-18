@@ -32,7 +32,7 @@ export default function Homepage() {
             innovants.
           </p>
           <Link to="/a-propos">
-            <button type="button" id="buttonHP">
+            <button type="button" id="buttonHP" className="globallButton">
               En savoir +
             </button>
           </Link>

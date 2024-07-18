@@ -39,7 +39,7 @@ export default function FormAddProjectImage() {
           Choisisser l'image du projet
         </label>
         <input className="formInput" type="file" name="image" required />
-        <button className="formButton" type="submit">
+        <button className="formButton globallButton" type="submit">
           ENVOYER
         </button>
       </form>

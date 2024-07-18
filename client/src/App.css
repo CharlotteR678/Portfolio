@@ -2,6 +2,7 @@
   --main-color: #dd826d;
   --secondary-color: #14495a;
   --background-color: #012b3c;
+  --toastify-font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -26,7 +27,7 @@ small {
   margin: 0;
 }
 
-button {
+.globallButton {
   background-color: var(--main-color);
   border: none;
   border-radius: 20px;
@@ -51,7 +52,7 @@ a {
 }
 
 @media only screen and (min-width: 1183px) {
-  button {
+  .globallButton {
     min-width: 25vw;
   }
 }

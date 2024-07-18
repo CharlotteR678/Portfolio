@@ -83,7 +83,7 @@ export default function FormUser() {
           {passwordForm !== passwordConf && (
             <small>Les mots de passe ne sont pas identiques</small>
           )}
-        <button className="formButton" type="submit" disabled={passwordForm !== passwordConf}>
+        <button className="formButton globallButton" type="submit" disabled={passwordForm !== passwordConf}>
           AJOUTER UN UTILISATEUR
         </button>
       </form>

@@ -75,7 +75,7 @@ export default function FormAddProject() {
             <label htmlFor={skill.id}>{skill.name}</label>
           </div>
         ))}
-        <button className="formButton" type="submit">
+        <button className="formButton globallButton" type="submit">
           ENVOYER
         </button>
       </form>
