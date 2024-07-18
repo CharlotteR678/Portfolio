@@ -1,5 +1,7 @@
 const tables = require("../../database/tables");
 
+const URL = `http://${process.env.DB_HOST}:${process.env.APP_PORT}/api`;
+
 const browse = async (req, res, next) => {
   try {
     const users = await tables.project.readAll();
@@ -35,21 +37,40 @@ const add = async (req, res, next) => {
 };
 
 const edit = async (req, res, next) => {
-    const project = { ...req.body, id: req.params.id };
-    try {
-      await tables.project.update(project);
-  
-      res.sendStatus(204);
-    } catch (err) {
-      next(err);
-    }
-  };
+  const project = { ...req.body, id: req.params.id };
+  try {
+    await tables.project.update(project);
+
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
 
 const destroy = async (req, res, next) => {
   try {
     await tables.project.delete(req.params.id);
 
     res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
+// Add image
+const editPicture = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    // Give the path which will be stored in the database
+    const filePath = `${URL}/images/${req.file.filename}`;
+    if (req.file !== null || req.file !== undefined) {
+      await tables.project.editImagePath(userId, filePath);
+      res.status(204).json(filePath);
+    } else {
+      res.status(400).json({
+        validationErrors: [{ message: "Aucun fichier téléchargé." }],
+      });
+    }
   } catch (err) {
     next(err);
   }
@@ -62,4 +83,5 @@ module.exports = {
   add,
   edit,
   destroy,
+  editPicture,
 };

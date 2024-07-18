@@ -1,5 +1,6 @@
 import { useEffect, useState, useReducer } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import notify from "../../modules/notify";
 import "../css/Form.css";
 
 import TitleH2Component from "../components/TitleH2Component";
@@ -11,7 +12,27 @@ export default function ModifyProjectForm() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [skills, setSkills] = useState(null);
+  const [projectSkills, setProjectSkills] = useState(null);
   const [confirmBox, setConfirmBox] = useState(false);
+  const [selectedBox, setSelectedBox] = useState([]);
+
+  useEffect(() => {
+    const findCommonSkills = () => {
+      const CommonSkills = [];
+      if (projectSkills !== null && skills !== null) {
+        projectSkills.forEach((projectSkill) => {
+          const checkIfCommon = skills.find(
+            (skill) => skill.id === projectSkill.skill_id
+          );
+          CommonSkills.push(checkIfCommon.id);
+        });
+      }
+      return CommonSkills;
+    };
+
+    const allSkills = findCommonSkills();
+    setSelectedBox(allSkills);
+  }, [projectSkills, skills]);
 
   useEffect(() => {
     const fetchSkillData = async () => {
@@ -34,6 +55,28 @@ export default function ModifyProjectForm() {
 
     fetchSkillData();
   }, [URL]);
+
+  useEffect(() => {
+    const fetchProjectSkillData = async () => {
+      try {
+        const response = await fetch(`${URL}/project-skill/${id}`, {
+          method: "GET",
+          credentials: "include",
+        });
+
+        if (response.status !== 200) {
+          throw new Error("Failed to fetch skills data");
+        }
+
+        const skillData = await response.json();
+        setProjectSkills(skillData);
+      } catch (err) {
+        console.error("Fetch skills error:", err);
+      }
+    };
+
+    fetchProjectSkillData();
+  }, [URL, id]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -67,10 +110,29 @@ export default function ModifyProjectForm() {
     }
   };
 
+  // image submit
+  const handleImageSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const formData = new FormData(event.target);
+      const response = await fetch(`${URL}/project/image/${id}`, {
+        method: "PUT",
+        credentials: "include",
+        body: formData,
+      });
+      if (response.status !== 204) {
+        throw new Error("Failed to create user");
+      }
+      notify("Image téléchargée avec succès", "success");
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  };
+
   // Create initial State for the useReducer hook
   const initialState = {
     project: { ...projectData },
-    beforeChange: { ...projectData },
   };
 
   // Create the different actions that will be used in UseReducer
@@ -78,8 +140,6 @@ export default function ModifyProjectForm() {
     switch (action.type) {
       case "SET_PROJECT":
         return { ...state, project: action.payload };
-      case "SET_BEFORE_CHANGE":
-        return { ...state, beforeChange: action.payload };
       default:
         return state;
     }
@@ -96,23 +156,34 @@ export default function ModifyProjectForm() {
 
   const deleteProject = async () => {
     try {
-        const response = await fetch(`${URL}/project/${id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        if (response.status !== 204) {
-            return console.error("an error occured, try againt later");
-        }
-        return navigate("/admin")
-      } catch (err) {
-        return console.error("Fetch error:", err);
+      const response = await fetch(`${URL}/project/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.status !== 204) {
+        return console.error("an error occured, try againt later");
       }
+      return navigate("/admin");
+    } catch (err) {
+      return console.error("Fetch error:", err);
+    }
+  };
+
+  const handleCheckedSkills = (event) => {
+    const SkillId = parseInt(event.target.value, 10);
+    if (event.target.checked) {
+      setSelectedBox([...selectedBox, SkillId]);
+    } else {
+      setSelectedBox(
+        selectedBox.filter((ididskills) => ididskills !== SkillId)
+      );
+    }
   };
 
   return (
-    <main className="formMain">
+    <main className="formMainModify">
       <TitleH2Component title={state.project.title} />
       <PopUp
         text="Êtes-vous sûr de vouloir effectuer cette action ?"
@@ -120,6 +191,20 @@ export default function ModifyProjectForm() {
         confirmBox={confirmBox}
         setConfirmBox={setConfirmBox}
       />
+      <form
+        onSubmit={handleImageSubmit}
+        className="formImage"
+        encType="multipart/form-data"
+        method="post"
+      >
+        <label className="formLabel" htmlFor="image du projet">
+          Choisisser l'image du projet
+        </label>
+        <input className="formInput" type="file" name="image" required />
+        <button className="formButton globallButton" type="submit">
+          VALIDER
+        </button>
+      </form>
       <form method="post" className="formGobalModify" onSubmit={handleSubmit}>
         <label className="formLabel" htmlFor="title">
           NOM
@@ -154,11 +239,16 @@ export default function ModifyProjectForm() {
                 type="checkbox"
                 value={skill.id}
                 name="skills"
+                onChange={handleCheckedSkills}
+                checked={
+                  selectedBox !== null &&
+                  selectedBox.some((projectSkill) => projectSkill === skill.id)
+                }
               />
               <label htmlFor={skill.id}>{skill.name}</label>
             </div>
           ))}
-        <button className="formButton" type="submit">
+        <button className="formButton globallButton" type="submit">
           ENVOYER
         </button>
       </form>

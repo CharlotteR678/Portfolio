@@ -30,9 +30,10 @@ export default function FormAddProject() {
       });
 
       if (response.status !== 201) {
-        throw new Error("Failed to create user");
+        throw new Error("Failed to create project");
       }
-      navigate("/admin");
+      const newId = await response.json();
+      navigate(`/add-image-form/${newId .insertId[0]}`);
     } catch (error) {
       console.error("Error:", error.message);
     }
@@ -74,7 +75,7 @@ export default function FormAddProject() {
             <label htmlFor={skill.id}>{skill.name}</label>
           </div>
         ))}
-        <button className="formButton" type="submit">
+        <button className="formButton globallButton" type="submit">
           ENVOYER
         </button>
       </form>

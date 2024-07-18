@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "../css/Form.css";
 
 import { AuthContext } from "../UseContext/AuthContext";
@@ -9,7 +9,12 @@ export default function FormUser() {
   const URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const { update, setUpdate } = useContext(AuthContext);
+  const [passwordForm, setPasswordForm] = useState("");
+  const [passwordConf, setPasswordConf] = useState("");
 
+  const handleInputChange = (event, setState) => {
+    setState(event.target.value);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,8 +39,8 @@ export default function FormUser() {
       if (response.status !== 201) {
         throw new Error("Failed to create user");
       }
-      setUpdate(!update)
-      navigate("/admin");
+      setUpdate(!update);
+      navigate("/");
     } catch (error) {
       console.error("Error:", error.message);
     }
@@ -56,11 +61,35 @@ export default function FormUser() {
         <label className="formLabel" htmlFor="mot de passe">
           MOT DE PASSE
         </label>
-        <input className="formInput" type="password" name="password" required />
-        <button className="formButton" type="submit">
+        <input
+          className="formInput"
+          type="password"
+          name="password"
+          value={passwordForm}
+          onChange={(event) => handleInputChange(event, setPasswordForm)}
+          required
+        />
+        <label className="formLabel" htmlFor="mot de passe">
+          VERIFIER LE MOT DE PASSE
+        </label>
+        <input
+          className="formInput"
+          type="password"
+          name="password"
+          value={passwordConf}
+          onChange={(event) => handleInputChange(event, setPasswordConf)}
+          required
+        />
+          {passwordForm !== passwordConf && (
+            <small>Les mots de passe ne sont pas identiques</small>
+          )}
+        <button className="formButton globallButton" type="submit" disabled={passwordForm !== passwordConf}>
           AJOUTER UN UTILISATEUR
         </button>
       </form>
+      <Link to="/connexion" className="LinkForm">
+        Déja un compte ? Se connecter{" "}
+      </Link>
     </main>
   );
 }

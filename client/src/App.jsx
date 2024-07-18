@@ -1,16 +1,33 @@
 import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { AuthProvider } from "./UseContext/AuthContext";
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <AuthProvider>
-      <NavBar />
+    <>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        closeButton:true
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <AuthProvider>
+        <NavBar />
         <Outlet />
-      <Footer />
+        <Footer />
       </AuthProvider>
+    </>
   );
 }
 

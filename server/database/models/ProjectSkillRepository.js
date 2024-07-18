@@ -25,12 +25,12 @@ class ProjectSkillRepository extends AbstractRepository {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `select project_id, skill_id from ${this.table} where project_id = ?`,
       [id]
     );
 
     // Return the first row of the result, which represents the item
-    return rows[0];
+    return rows;
   }
 
   async readAll() {

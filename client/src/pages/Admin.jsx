@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+import { AuthContext } from "../UseContext/AuthContext";
 
 import "../css/Admin.css";
 
@@ -12,9 +14,21 @@ export default function Admin() {
   const [projectHidden, setProjectHidden] = useState(false);
   const [skillHidden, setSkillHidden] = useState(false);
   const navigate = useNavigate();
+  const { auth } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (auth !== null && auth === false) {
+      navigate("/");
+    }
+  }, [auth, navigate])
+
 
   const HandleAddProject = () => {
     navigate("/add-form");
+  };
+
+  const HandleAddSkill = () => {
+    navigate("/add-skill-form");
   };
 
   const HandleModifyProject = () => {
@@ -23,7 +37,7 @@ export default function Admin() {
 
   const HandleModifySkill = () => {
     setSkillHidden(!skillHidden);
-  };  
+  };
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -67,7 +81,8 @@ export default function Admin() {
     fetchSkill();
   }, [URL]);
 
-  return (
+  return ( 
+
     <main id="AdminMain">
       <div className="AdminDiv">
         <TitleH2Component title="AJOUTER" />
@@ -78,14 +93,16 @@ export default function Admin() {
         >
           PROJETS
         </button>
-        <button className="AdminButton" type="submit">
+        <button className="AdminButton" type="submit" onClick={HandleAddSkill}>
           COMPETENCES
         </button>
       </div>
       <div className="AdminDiv">
         <TitleH2Component title="MODIFIER / SUPPRIMER" />
         <button
-          className="AdminButton"
+          className={
+            projectHidden === false ? "AdminButton" : "AdminButtonVisible"
+          }
           type="submit"
           onClick={HandleModifyProject}
         >
@@ -94,12 +111,14 @@ export default function Admin() {
         <ul className={projectHidden === false ? "hidden" : "AdminUlVisible"}>
           {projectList.map((project) => (
             <Link to={`/modify-project/${project.id}`} key={project.id}>
-              <li>{project.title}</li>
+              <li className="modifyList">{project.title}</li>
             </Link>
           ))}
         </ul>
         <button
-          className="AdminButton"
+          className={
+            skillHidden === false ? "AdminButton" : "AdminButtonVisible"
+          }
           type="submit"
           onClick={HandleModifySkill}
         >
@@ -108,7 +127,7 @@ export default function Admin() {
         <ul className={skillHidden === false ? "hidden" : "AdminUlVisible"}>
           {skillList.map((skill) => (
             <Link to={`/modify-skill/${skill.id}`} key={skill.id}>
-              <li>{skill.name}</li>
+              <li className="modifyList">{skill.name}</li>
             </Link>
           ))}
         </ul>
