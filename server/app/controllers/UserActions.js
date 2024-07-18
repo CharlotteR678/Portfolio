@@ -35,9 +35,8 @@ const add = async (req, res, next) => {
     const insertId = await tables.user.create(user);
 
     delete req.body.password;
-    const IsAdmin = true;
 
-    const token = jwt.sign({ sub: insertId, IsAdmin }, process.env.APP_SECRET, {
+    const token = jwt.sign({ sub: insertId }, process.env.APP_SECRET, {
       expiresIn: "1d",
     });
     res.cookie("portfolioCRCookie", token, {
@@ -87,10 +86,9 @@ const checkLog = async (req, res, next) => {
       user !== undefined &&
       (await bcrypt.compare(password, user.password)) === true
     ) {
-      const IsAdmin = true;
       // Generate JWT token
       const token = jwt.sign(
-        { sub: user.id, IsAdmin },
+        { sub: user.id },
         process.env.APP_SECRET,
         { expiresIn: "1d" }
       );

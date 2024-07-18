@@ -10,10 +10,6 @@ const ValidateCookie = (req, res, next) => {
     const decoded = jwt.verify(token, process.env.APP_SECRET);
     req.user = decoded;
 
-    if (req.user.IsAdmin === false) {
-      return res.status(403).json({ error: "Access denied" });
-    }
-
     return next();
   } catch (err) {
     console.error("Token verification error:", err);
