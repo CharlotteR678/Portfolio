@@ -7,24 +7,53 @@
 }
 
 #experiencesDiv {
-  min-width: 25vw;
   min-height: 30vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  width: 80vw;
 }
 
-.imageAbout {
-  width: 8vw;
+#aboutInfoDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
 }
 
-.aboutImage {
+#competencesdiv,
+#hobbiesdiv {
+  width: 100%;
+}
+
+#hobbiesdiv {
+  margin-top: 15%;
+}
+
+.imageAbout,
+.aboutHobbiesLi {
+  width: 80px;
+}
+
+.aboutUl {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 3%;
 }
 
 .aboutLi {
   margin: 2%;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.aboutHobbiesLi {
+  display: flex;
+  border: 1px solid var(--main-color);
+  height: 80px;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (min-width: 1183px) {
@@ -39,8 +68,27 @@
     border: 1px solid var(--main-color);
     box-shadow: -17px 11px 0px var(--main-color);
     min-width: 25vw;
+    width: auto;
     min-height: 55vh;
     align-items: center;
     padding: 2em;
+  }
+
+  .imageAbout,
+  .aboutHobbiesLi {
+    width: 125px;
+  }
+
+  .aboutHobbiesLi {
+    height: 125px;
+  }
+
+  #competencesdiv,
+  #hobbiesdiv {
+    width: 60%;
+  }
+
+  #aboutInfoDiv {
+    width: auto;
   }
 }

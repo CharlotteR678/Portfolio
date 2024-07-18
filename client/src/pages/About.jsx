@@ -24,10 +24,10 @@ export default function About() {
           titleExp="titre de l'expérience"
           descritionExp="Une description de l'expérience sdkfjskqfjlkfd"        />
       </div>
-      <div>
-        <div>
+      <div id="aboutInfoDiv">
+        <div id="competencesdiv">
           <h2>COMPETENCES</h2>
-          <ul className="aboutImage">
+          <ul className="aboutUl">
             <li className="aboutLi"><img src={Html} alt="HTML logo" className="imageAbout"/></li>
             <li className="aboutLi"><img src={Css} alt="CSS logo" className="imageAbout"/></li>
             <li className="aboutLi"><img src={Js} alt="Javascript logo" className="imageAbout"/></li>
@@ -36,12 +36,12 @@ export default function About() {
             <li className="aboutLi"><img src={Mysql} alt="Mysql logo" className="imageAbout"/></li>
           </ul>
         </div>
-        <div>
+        <div id="hobbiesdiv">
           <h2>CENTRES D'INTERET</h2>
-          <ul>
-            <li>Quizz</li>
-            <li>Mars</li>
-            <li>Animaux</li>
+          <ul className="aboutUl" >
+          <li className="aboutLi aboutHobbiesLi">Quizz</li>
+          <li className="aboutLi aboutHobbiesLi">Mars</li>
+          <li className="aboutLi aboutHobbiesLi">Animaux</li>
           </ul>
         </div>
       </div>
