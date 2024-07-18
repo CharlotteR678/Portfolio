@@ -33,7 +33,7 @@ export default function NavBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/a-Propos">
+          <NavLink to="/a-propos">
             <p className="menu-link">A PROPOS</p>
           </NavLink>
         </li>
@@ -50,7 +50,12 @@ export default function NavBar() {
               </NavLink>
             </li>
             <li>
-              <button className="menu-link" type="button" id="deleteButton" onClick={disconnect}>
+              <button
+                className="menu-link"
+                type="button"
+                id="deleteButton"
+                onClick={disconnect}
+              >
                 DECONNEXION
               </button>
             </li>

@@ -27,7 +27,7 @@ class ProjectRepository extends AbstractRepository {
     );
 
     // Return the ID of the newly inserted item
-    return result2.insertId;
+    return [result.insertId, result2.insertId];
   }
 
   // The Rs of CRUD - Read operations
@@ -49,6 +49,7 @@ class ProjectRepository extends AbstractRepository {
     project.id, 
     project.title, 
     project.description, 
+    project.image,
     GROUP_CONCAT(skill.name SEPARATOR ' ') AS skills
     FROM project
     JOIN project_skill ON project_skill.project_id = project.id
@@ -102,6 +103,15 @@ class ProjectRepository extends AbstractRepository {
       [id]
     );
     return [result2.affectedRows, result.affectedRows];
+  }
+
+  // Add image
+  async editImagePath(userId, filePath) {
+    const result = await this.database.query(
+      `UPDATE ${this.table} set image = ? WHERE id = ?`,
+      [filePath, userId]
+    );
+    return result.affectedRows;
   }
 }
 

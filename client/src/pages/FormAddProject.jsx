@@ -32,7 +32,8 @@ export default function FormAddProject() {
       if (response.status !== 201) {
         throw new Error("Failed to create user");
       }
-      navigate("/admin");
+      const newId = await response.json();
+      navigate(`/add-image-form/${newId .insertId[0]}`);
     } catch (error) {
       console.error("Error:", error.message);
     }

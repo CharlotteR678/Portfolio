@@ -8,7 +8,8 @@ create table user (
 create table project (
   id int unsigned primary key auto_increment not null,
   title varchar(55) not null,
-  description varchar(255) not null
+  description varchar(255) not null,
+  image varchar(255) DEFAULT 'http://localhost:3310/api/images/cretchum.png'
 );
 
 create table skill (

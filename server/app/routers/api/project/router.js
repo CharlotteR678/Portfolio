@@ -7,7 +7,9 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import item-related actions
-const { browse, read, add, edit, destroy } = require("../../../controllers/ProjectActions");
+const { browse, read, add, edit, destroy, editPicture} = require("../../../controllers/ProjectActions");
+
+const upload = require("../../../services/UploadImage");
 
 const ValidateCookie = require("../../../services/ValidateCookie")
 
@@ -23,6 +25,10 @@ router.post("/", ValidateCookie, add);
 router.put("/:id", ValidateCookie, edit);
 
 router.delete("/:id", ValidateCookie, destroy);
+
+
+// route to add image
+router.put("/image/:id", upload.single("image"), editPicture);
 
 /* ************************************************************************* */
 

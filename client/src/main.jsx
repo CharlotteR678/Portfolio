@@ -14,11 +14,13 @@ import ModifyProjectForm from "./pages/ModifyProjectForm";
 import ModifySkillForm from "./pages/ModifySkillForm";
 import About from "./pages/About";
 import FormAddSkill from "./pages/FormAddSkill";
+import FormAddProjectImage from "./pages/FormAddProjectImage";
 
 import SkillLoader from "./handlers/SkillLoader/SkillLoader";
 import ProjectLoader from "./handlers/projectLoader/ProjectLoader";
 import ProjectLoaderRead from "./handlers/projectLoaderRead/ProjectLoaderRead";
 import SkillLoaderRead from "./handlers/skillLoaderRead/SkillLoaderRead";
+
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,10 @@ const router = createBrowserRouter([
         path: "/add-form",
         element: <FormAddProject />,
         loader : SkillLoader
+      },
+      {
+        path: "/add-image-form/:id",
+        element: <FormAddProjectImage />,
       },
       {
         path: "/add-skill-form",

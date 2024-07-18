@@ -24,8 +24,8 @@ router.delete("/:id", destroy);
 
 router.post("/logout", disconect);
 
-// Route to check the login
 router.post("/login", checkLog);
+
 
 /* ************************************************************************* */
 
