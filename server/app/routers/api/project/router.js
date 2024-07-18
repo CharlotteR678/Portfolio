@@ -11,7 +11,9 @@ const { browse, read, add, edit, destroy, editPicture} = require("../../../contr
 
 const upload = require("../../../services/UploadImage");
 
-const ValidateCookie = require("../../../services/ValidateCookie")
+const ValidateCookie = require("../../../services/ValidateCookie"); 
+
+const ValidateProject = require("../../../services/ValidateProject");
 
 // Route to get a list of items
 router.get("/", browse);
@@ -20,9 +22,9 @@ router.get("/", browse);
 router.get("/:id", ValidateCookie, read);
 
 // Route to add a new item
-router.post("/", ValidateCookie, add);
+router.post("/", ValidateCookie, ValidateProject, add);
 
-router.put("/:id", ValidateCookie, edit);
+router.put("/:id", ValidateCookie, ValidateProject, edit);
 
 router.delete("/:id", destroy);
 

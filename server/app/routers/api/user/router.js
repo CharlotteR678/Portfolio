@@ -7,7 +7,20 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import item-related actions
-const { browse, read, add, edit, destroy, disconect, checkLog} = require("../../../controllers/UserActions");
+const {
+  browse,
+  read,
+  add,
+  edit,
+  destroy,
+  disconect,
+  checkLog,
+} = require("../../../controllers/UserActions");
+
+const ValidateUser = require("../../../services/ValidateUser");
+
+const ValidateLogin = require("../../../services/ValidateLogin");
+
 
 // Route to get a list of items
 router.get("/", browse);
@@ -16,16 +29,15 @@ router.get("/", browse);
 router.get("/:id", read);
 
 // Route to add a new item
-router.post("/", add);
+router.post("/", ValidateUser, add);
 
-router.put("/:id", edit);
+router.put("/:id", ValidateUser, edit);
 
 router.delete("/:id", destroy);
 
 router.post("/logout", disconect);
 
-router.post("/login", checkLog);
-
+router.post("/login", ValidateLogin, checkLog);
 
 /* ************************************************************************* */
 
