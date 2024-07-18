@@ -8,7 +8,7 @@ const ProjectLoaderRead = async ({params}) => {
       method: "GET",
       credentials: "include",
     });
-    if (response.status === 401 || response.status === 403) {
+    if (response.status === 401) {
         return redirect("/connexion");
       }
     if (response.status !== 200) {

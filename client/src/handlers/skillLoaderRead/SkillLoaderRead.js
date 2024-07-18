@@ -8,8 +8,8 @@ const SkillLoaderRead = async ({params}) => {
       method: "GET",
       credentials: "include",
     });
-    if (response.status === 401 || response.status === 403) {
-        return redirect("/acces_refuse");
+    if (response.status === 401) {
+        return redirect("/connexion");
       }
     if (response.status !== 200) {
       return new Error("Failed to fetch profile data");

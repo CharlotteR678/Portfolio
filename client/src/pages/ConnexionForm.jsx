@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../css/Form.css";
 
 import { AuthContext } from "../UseContext/AuthContext";
@@ -55,6 +55,9 @@ export default function ConnexionForm() {
           CONNEXION
         </button>
       </form>
+      <Link to="/inscription" className="LinkForm">
+        Pas encore inscrit ? Se créer un compte
+      </Link>
     </main>
   );
 }
