@@ -12,7 +12,27 @@ export default function ModifyProjectForm() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [skills, setSkills] = useState(null);
+  const [projectSkills, setProjectSkills] = useState(null);
   const [confirmBox, setConfirmBox] = useState(false);
+  const [selectedBox, setSelectedBox] = useState([]);
+
+  useEffect(() => {
+    const findCommonSkills = () => {
+      const CommonSkills = [];
+      if (projectSkills !== null && skills !== null) {
+        projectSkills.forEach((projectSkill) => {
+          const checkIfCommon = skills.find(
+            (skill) => skill.id === projectSkill.skill_id
+          );
+          CommonSkills.push(checkIfCommon.id);
+        });
+      }
+      return CommonSkills;
+    };
+
+    const allSkills = findCommonSkills();
+    setSelectedBox(allSkills);
+  }, [projectSkills, skills]);
 
   useEffect(() => {
     const fetchSkillData = async () => {
@@ -35,6 +55,28 @@ export default function ModifyProjectForm() {
 
     fetchSkillData();
   }, [URL]);
+
+  useEffect(() => {
+    const fetchProjectSkillData = async () => {
+      try {
+        const response = await fetch(`${URL}/project-skill/${id}`, {
+          method: "GET",
+          credentials: "include",
+        });
+
+        if (response.status !== 200) {
+          throw new Error("Failed to fetch skills data");
+        }
+
+        const skillData = await response.json();
+        setProjectSkills(skillData);
+      } catch (err) {
+        console.error("Fetch skills error:", err);
+      }
+    };
+
+    fetchProjectSkillData();
+  }, [URL, id]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -129,6 +171,17 @@ export default function ModifyProjectForm() {
     }
   };
 
+  const handleCheckedSkills = (event) => {
+    const SkillId = parseInt(event.target.value, 10);
+    if (event.target.checked) {
+      setSelectedBox([...selectedBox, SkillId]);
+    } else {
+      setSelectedBox(
+        selectedBox.filter((ididskills) => ididskills !== SkillId)
+      );
+    }
+  };
+
   return (
     <main className="formMainModify">
       <TitleH2Component title={state.project.title} />
@@ -186,6 +239,11 @@ export default function ModifyProjectForm() {
                 type="checkbox"
                 value={skill.id}
                 name="skills"
+                onChange={handleCheckedSkills}
+                checked={
+                  selectedBox !== null &&
+                  selectedBox.some((projectSkill) => projectSkill === skill.id)
+                }
               />
               <label htmlFor={skill.id}>{skill.name}</label>
             </div>
