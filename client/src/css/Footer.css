@@ -8,6 +8,10 @@
   flex-direction: column;
 }
 
+#footerUl {
+  display: flex;
+}
+
 @media only screen and (min-width: 1183px) {
   .footer {
     flex-direction: row;

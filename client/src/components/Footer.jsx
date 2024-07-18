@@ -13,7 +13,7 @@ export default function Footer() {
         </ul>
       </div>
       <div className="footerRS">
-        <ul>
+        <ul id="footerUl">
           <li>
             <a href="https://www.linkedin.com/in/charlotte-rouyer-4ba4ba150/">
               <p className="menu-link">LinkedIn</p>

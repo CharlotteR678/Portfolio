@@ -79,6 +79,10 @@
     width: 125px;
   }
 
+  .imageAbout:hover {
+    width: 145px;
+  }
+
   .aboutHobbiesLi {
     height: 125px;
   }
