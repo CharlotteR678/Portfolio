@@ -1,4 +1,5 @@
-.formMain {
+.formMain,
+.formMainModify {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,9 +7,14 @@
   min-height: 83vh;
 }
 
+.formMainModify {
+  margin-top: 2%;
+}
+
 .formGobal,
 .formGobalConnexion,
-.formGobalModify {
+.formGobalModify,
+.formImage {
   display: flex;
   flex-direction: column;
   width: 75vw;
@@ -21,7 +27,7 @@
 }
 
 .formGobalModify {
-  margin-top: 2%;
+  margin: 0 0 2% 0;
 }
 
 .formButton {
@@ -43,10 +49,15 @@
   margin-top: 2%;
 }
 
+.formImage {
+  margin: 2% 0;
+}
+
 @media only screen and (min-width: 1183px) {
   .formGobal,
   .formGobalConnexion,
-  .formGobalModify {
+  .formGobalModify,
+  .formImage {
     width: 30vw;
   }
 }

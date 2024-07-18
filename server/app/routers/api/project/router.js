@@ -24,11 +24,11 @@ router.post("/", ValidateCookie, add);
 
 router.put("/:id", ValidateCookie, edit);
 
-router.delete("/:id", ValidateCookie, destroy);
+router.delete("/:id", destroy);
 
 
 // route to add image
-router.put("/image/:id", upload.single("image"), editPicture);
+router.put("/image/:id", ValidateCookie, upload.single("image"), editPicture);
 
 /* ************************************************************************* */
 

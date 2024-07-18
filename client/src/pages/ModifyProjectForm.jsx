@@ -67,6 +67,25 @@ export default function ModifyProjectForm() {
     }
   };
 
+  // image submit
+  const handleImageSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const formData = new FormData(event.target);
+      const response = await fetch(`${URL}/project/image/${id}`, {
+        method: "PUT",
+        credentials: "include",
+        body: formData,
+      });
+      if (response.status !== 204) {
+        throw new Error("Failed to create user");
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  };
+
   // Create initial State for the useReducer hook
   const initialState = {
     project: { ...projectData },
@@ -96,23 +115,23 @@ export default function ModifyProjectForm() {
 
   const deleteProject = async () => {
     try {
-        const response = await fetch(`${URL}/project/${id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        if (response.status !== 204) {
-            return console.error("an error occured, try againt later");
-        }
-        return navigate("/admin")
-      } catch (err) {
-        return console.error("Fetch error:", err);
+      const response = await fetch(`${URL}/project/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.status !== 204) {
+        return console.error("an error occured, try againt later");
       }
+      return navigate("/admin");
+    } catch (err) {
+      return console.error("Fetch error:", err);
+    }
   };
 
   return (
-    <main className="formMain">
+    <main className="formMainModify">
       <TitleH2Component title={state.project.title} />
       <PopUp
         text="Êtes-vous sûr de vouloir effectuer cette action ?"
@@ -120,6 +139,20 @@ export default function ModifyProjectForm() {
         confirmBox={confirmBox}
         setConfirmBox={setConfirmBox}
       />
+      <form
+        onSubmit={handleImageSubmit}
+        className="formImage"
+        encType="multipart/form-data"
+        method="post"
+      >
+        <label className="formLabel" htmlFor="image du projet">
+          Choisisser l'image du projet
+        </label>
+        <input className="formInput" type="file" name="image" required />
+        <button className="formButton" type="submit">
+          VALIDER
+        </button>
+      </form>
       <form method="post" className="formGobalModify" onSubmit={handleSubmit}>
         <label className="formLabel" htmlFor="title">
           NOM
