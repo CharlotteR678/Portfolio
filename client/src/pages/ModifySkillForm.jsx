@@ -41,7 +41,6 @@ export default function ModifySkillForm() {
   // Create initial State for the useReducer hook
   const initialState = {
     skill: { ...skillData },
-    beforeChange: { ...skillData },
   };
 
   // Create the different actions that will be used in UseReducer
@@ -49,8 +48,6 @@ export default function ModifySkillForm() {
     switch (action.type) {
       case "SET_SKILL":
         return { ...state, skill: action.payload };
-      case "SET_BEFORE_CHANGE":
-        return { ...state, beforeChange: action.payload };
       default:
         return state;
     }

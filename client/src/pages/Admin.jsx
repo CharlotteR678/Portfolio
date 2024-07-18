@@ -27,7 +27,7 @@ export default function Admin() {
 
   const HandleModifySkill = () => {
     setSkillHidden(!skillHidden);
-  };  
+  };
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -89,7 +89,9 @@ export default function Admin() {
       <div className="AdminDiv">
         <TitleH2Component title="MODIFIER / SUPPRIMER" />
         <button
-          className="AdminButton"
+          className={
+            projectHidden === false ? "AdminButton" : "AdminButtonVisible"
+          }
           type="submit"
           onClick={HandleModifyProject}
         >
@@ -98,12 +100,14 @@ export default function Admin() {
         <ul className={projectHidden === false ? "hidden" : "AdminUlVisible"}>
           {projectList.map((project) => (
             <Link to={`/modify-project/${project.id}`} key={project.id}>
-              <li>{project.title}</li>
+              <li className="modifyList">{project.title}</li>
             </Link>
           ))}
         </ul>
         <button
-          className="AdminButton"
+          className={
+            skillHidden === false ? "AdminButton" : "AdminButtonVisible"
+          }
           type="submit"
           onClick={HandleModifySkill}
         >
@@ -112,7 +116,7 @@ export default function Admin() {
         <ul className={skillHidden === false ? "hidden" : "AdminUlVisible"}>
           {skillList.map((skill) => (
             <Link to={`/modify-skill/${skill.id}`} key={skill.id}>
-              <li>{skill.name}</li>
+              <li className="modifyList">{skill.name}</li>
             </Link>
           ))}
         </ul>

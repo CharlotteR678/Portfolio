@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 export default function ProjetsComponent({ project, image }) {
   return (
     <>
+    <div className="projectImageContainter">
       <img src={image} alt={project.title} className="projectImage" />
+      </div>
       <h2 className="h2Project">{project.title}</h2>
       <p className="projectDescription">{project.description}</p>
       <p className="projectSkill">{project.skills}</p>

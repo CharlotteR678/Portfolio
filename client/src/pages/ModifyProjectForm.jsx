@@ -91,7 +91,6 @@ export default function ModifyProjectForm() {
   // Create initial State for the useReducer hook
   const initialState = {
     project: { ...projectData },
-    beforeChange: { ...projectData },
   };
 
   // Create the different actions that will be used in UseReducer
@@ -99,8 +98,6 @@ export default function ModifyProjectForm() {
     switch (action.type) {
       case "SET_PROJECT":
         return { ...state, project: action.payload };
-      case "SET_BEFORE_CHANGE":
-        return { ...state, beforeChange: action.payload };
       default:
         return state;
     }
