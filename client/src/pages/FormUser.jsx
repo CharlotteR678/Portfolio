@@ -40,7 +40,7 @@ export default function FormUser() {
         throw new Error("Failed to create user");
       }
       setUpdate(!update);
-      navigate("/admin");
+      navigate("/");
     } catch (error) {
       console.error("Error:", error.message);
     }

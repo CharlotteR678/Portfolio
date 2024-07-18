@@ -24,7 +24,7 @@ export default function FormAddSkill() {
       });
 
       if (response.status !== 201) {
-        throw new Error("Failed to create user");
+        throw new Error("Failed to create skill");
       }
       navigate("/admin");
     } catch (error) {

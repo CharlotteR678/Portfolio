@@ -18,7 +18,7 @@ export default function FormAddProjectImage() {
         body: formData,
       });
       if (response.status !== 204) {
-        throw new Error("Failed to create user");
+        throw new Error("Failed to import image");
       }
       navigate("/admin");
     } catch (error) {

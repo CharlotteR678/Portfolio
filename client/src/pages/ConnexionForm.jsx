@@ -26,7 +26,7 @@ export default function ConnexionForm() {
 
       if (response.status === 200) {
         setUpdate(!update)
-        return navigate("/admin");
+        return navigate("/");
       }
       return { error: "incorrect mail or password" };
     } catch (err) {

@@ -30,7 +30,7 @@ export default function FormAddProject() {
       });
 
       if (response.status !== 201) {
-        throw new Error("Failed to create user");
+        throw new Error("Failed to create project");
       }
       const newId = await response.json();
       navigate(`/add-image-form/${newId .insertId[0]}`);

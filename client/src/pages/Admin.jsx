@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+import { AuthContext } from "../UseContext/AuthContext";
 
 import "../css/Admin.css";
 
@@ -12,6 +14,14 @@ export default function Admin() {
   const [projectHidden, setProjectHidden] = useState(false);
   const [skillHidden, setSkillHidden] = useState(false);
   const navigate = useNavigate();
+  const { auth } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (auth !== null && auth === false) {
+      navigate("/");
+    }
+  }, [auth, navigate])
+
 
   const HandleAddProject = () => {
     navigate("/add-form");
@@ -71,7 +81,8 @@ export default function Admin() {
     fetchSkill();
   }, [URL]);
 
-  return (
+  return ( 
+
     <main id="AdminMain">
       <div className="AdminDiv">
         <TitleH2Component title="AJOUTER" />
