@@ -13,6 +13,7 @@ import Admin from "./pages/Admin";
 import ModifyProjectForm from "./pages/ModifyProjectForm";
 import ModifySkillForm from "./pages/ModifySkillForm";
 import About from "./pages/About";
+import FormAddSkill from "./pages/FormAddSkill";
 
 import SkillLoader from "./handlers/SkillLoader/SkillLoader";
 import ProjectLoader from "./handlers/projectLoader/ProjectLoader";
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
         path: "/add-form",
         element: <FormAddProject />,
         loader : SkillLoader
+      },
+      {
+        path: "/add-skill-form",
+        element: <FormAddSkill />,
       },
       {
         path: "/admin",

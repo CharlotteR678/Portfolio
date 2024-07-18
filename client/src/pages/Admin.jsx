@@ -17,6 +17,10 @@ export default function Admin() {
     navigate("/add-form");
   };
 
+  const HandleAddSkill = () => {
+    navigate("/add-skill-form");
+  };
+
   const HandleModifyProject = () => {
     setProjectHidden(!projectHidden);
   };
@@ -78,7 +82,7 @@ export default function Admin() {
         >
           PROJETS
         </button>
-        <button className="AdminButton" type="submit">
+        <button className="AdminButton" type="submit" onClick={HandleAddSkill}>
           COMPETENCES
         </button>
       </div>
