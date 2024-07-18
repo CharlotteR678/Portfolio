@@ -34,7 +34,7 @@ export default function FormAddSkill() {
 
   return (
     <main className="formMain">
-      <TitleH2Component title="NOUVEAU PROJET" />
+      <TitleH2Component title="NOUVELLE COMPETENCE" />
       <form method="post" className="formGobal" onSubmit={handleSubmit}>
         <label className="formLabel" htmlFor="title">
           NOM
