@@ -27,6 +27,7 @@
 
 .projectSkillMap {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .projectSkill {
@@ -41,5 +42,6 @@
 @media only screen and (min-width: 1183px) {
   .projectImageContainter {
     width: 25vw;
+    height: 17vw;
   }
 }
