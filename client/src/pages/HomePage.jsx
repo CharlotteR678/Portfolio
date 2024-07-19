@@ -22,14 +22,13 @@ export default function Homepage() {
             ))}
           </ul>
           <p id="pHP">
-            Animée par ma passion pour l'informatique et son évolution
-            perpétuelle, j'ai choisi de me reconvertir en suivant une formation
-            intensive de 5 mois à la Wild Code School. Cette immersion m'a
-            permis d'acquérir des compétences en développement Web et Web Mobile
-            fullstack, sur JS/REACT. Je suis maintenant prête à mettre en
-            pratique ces connaissances à travers une alternance, afin de relever
-            de nouveaux défis et de contribuer activement à des projets
-            innovants.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <Link to="/a-propos">
             <button type="button" id="buttonHP" className="globallButton">
