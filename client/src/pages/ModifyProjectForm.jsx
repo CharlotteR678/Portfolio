@@ -161,6 +161,7 @@ export default function ModifyProjectForm() {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
       });
       if (response.status !== 204) {
         return console.error("an error occured, try againt later");
@@ -242,7 +243,7 @@ export default function ModifyProjectForm() {
                 onChange={handleCheckedSkills}
                 checked={
                   selectedBox !== null &&
-                  selectedBox.some((projectSkill) => projectSkill === skill.id)
+                  selectedBox.includes(skill.id)
                 }
               />
               <label htmlFor={skill.id}>{skill.name}</label>

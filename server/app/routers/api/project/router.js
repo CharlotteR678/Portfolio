@@ -26,7 +26,7 @@ router.post("/", ValidateCookie, ValidateProject, add);
 
 router.put("/:id", ValidateCookie, ValidateProject, edit);
 
-router.delete("/:id", destroy);
+router.delete("/:id", ValidateCookie, destroy);
 
 
 // route to add image

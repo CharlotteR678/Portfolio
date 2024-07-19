@@ -30,7 +30,7 @@ router.post("/", ValidateCookie, ValidateSkill, add);
 
 router.put("/:id", ValidateCookie, ValidateSkill, edit);
 
-router.delete("/:id", destroy);
+router.delete("/:id", ValidateCookie, destroy);
 
 /* ************************************************************************* */
 

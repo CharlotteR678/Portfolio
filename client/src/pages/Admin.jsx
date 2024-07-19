@@ -18,7 +18,7 @@ export default function Admin() {
 
   useEffect(() => {
     if (auth !== null && auth === false) {
-      navigate("/");
+      navigate("/connexion");
     }
   }, [auth, navigate])
 
