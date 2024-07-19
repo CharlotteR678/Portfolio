@@ -75,6 +75,10 @@
   #experiencesDiv {
     width: 50vw;
   }
+
+  .aboutLi {
+    font-size: 1.2em;
+  }
 }
 
 @media only screen and (min-width: 1183px) {
@@ -115,5 +119,9 @@
 
   #aboutInfoDiv {
     width: auto;
+  }
+
+  .aboutLi {
+    font-size: 1.2em;
   }
 }

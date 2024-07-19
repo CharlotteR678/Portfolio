@@ -39,7 +39,7 @@ export default function NavBar() {
         </li>
         <li>
           <NavLink to="/projets">
-            <p className="menu-link">MES PROJETS</p>
+            <p className="menu-link">PROJETS</p>
           </NavLink>
         </li>
         {auth !== null && auth !== false && (
