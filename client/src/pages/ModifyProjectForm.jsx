@@ -242,7 +242,7 @@ export default function ModifyProjectForm() {
                 onChange={handleCheckedSkills}
                 checked={
                   selectedBox !== null &&
-                  selectedBox.some((projectSkill) => projectSkill === skill.id)
+                  selectedBox.includes(skill.id)
                 }
               />
               <label htmlFor={skill.id}>{skill.name}</label>
