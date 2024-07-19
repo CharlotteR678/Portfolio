@@ -18,8 +18,10 @@ import FormAddProjectImage from "./pages/FormAddProjectImage";
 
 import SkillLoader from "./handlers/SkillLoader/SkillLoader";
 import ProjectLoader from "./handlers/projectLoader/ProjectLoader";
+import AuthLoader from "./handlers/AuthLoader";
 import ProjectLoaderRead from "./handlers/projectLoaderRead/ProjectLoaderRead";
 import SkillLoaderRead from "./handlers/skillLoaderRead/SkillLoaderRead";
+
 
 
 const router = createBrowserRouter([
@@ -64,6 +66,7 @@ const router = createBrowserRouter([
       {
         path: "/admin",
         element: <Admin />,
+        loader : AuthLoader,
       },
       {
         path: "/modify-project/:id",
