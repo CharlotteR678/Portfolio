@@ -13,13 +13,15 @@ export default function Admin() {
   const [skillHidden, setSkillHidden] = useState(false);
   const navigate = useNavigate();
 
-  const HandleAddProject = () => {
-    navigate("/add-form");
+  const HandleAdd = (e) => {
+    e.preventDefault();
+    if (e.target.value === "project") {
+      navigate("/add-form");
+    } else {
+      navigate("/add-skill-form");
+    }
   };
-
-  const HandleAddSkill = () => {
-    navigate("/add-skill-form");
-  };
+  
 
   const HandleModifyProject = () => {
     setProjectHidden(!projectHidden);
@@ -78,11 +80,17 @@ export default function Admin() {
         <button
           className="AdminButton"
           type="submit"
-          onClick={HandleAddProject}
+          value="project"
+          onClick={HandleAdd}
         >
           PROJETS
         </button>
-        <button className="AdminButton" type="submit" onClick={HandleAddSkill}>
+        <button
+          className="AdminButton"
+          type="submit"
+          value="skill"
+          onClick={HandleAdd}
+        >
           COMPETENCES
         </button>
       </div>

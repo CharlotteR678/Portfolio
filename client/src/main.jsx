@@ -62,6 +62,7 @@ const router = createBrowserRouter([
       {
         path: "/add-skill-form",
         element: <FormAddSkill />,
+        loader : AuthLoader,
       },
       {
         path: "/admin",
