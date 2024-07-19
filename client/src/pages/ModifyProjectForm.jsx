@@ -161,6 +161,7 @@ export default function ModifyProjectForm() {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
       });
       if (response.status !== 204) {
         return console.error("an error occured, try againt later");
